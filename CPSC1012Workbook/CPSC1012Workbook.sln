@@ -5,13 +5,15 @@ VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{BB319575-4588-46D4-B230-5019F40C7C17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTypes", "DataTypes\DataTypes.csproj", "{CE00BFE3-2983-4350-9305-9968AD7DB79A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataTypes", "DataTypes\DataTypes.csproj", "{CE00BFE3-2983-4350-9305-9968AD7DB79A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Variables", "Variables\Variables.csproj", "{9B7020AF-10A3-4696-92EE-52EE42AA21C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Variables", "Variables\Variables.csproj", "{9B7020AF-10A3-4696-92EE-52EE42AA21C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInput", "UserInput\UserInput.csproj", "{6F4637BE-98F0-40BC-ABB9-B9D18B7F492B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserInput", "UserInput\UserInput.csproj", "{6F4637BE-98F0-40BC-ABB9-B9D18B7F492B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProblemSolvingProb1", "ProblemSolvingProb1\ProblemSolvingProb1.csproj", "{D3608A95-5A0B-4A43-B9A1-45E722B1A4D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProblemSolvingProb1", "ProblemSolvingProb1\ProblemSolvingProb1.csproj", "{D3608A95-5A0B-4A43-B9A1-45E722B1A4D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AreaOfHexagon", "AreaOfHexagon\AreaOfHexagon.csproj", "{25A0961F-64C5-4A12-AC2C-8CE16B2760C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{D3608A95-5A0B-4A43-B9A1-45E722B1A4D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3608A95-5A0B-4A43-B9A1-45E722B1A4D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3608A95-5A0B-4A43-B9A1-45E722B1A4D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25A0961F-64C5-4A12-AC2C-8CE16B2760C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25A0961F-64C5-4A12-AC2C-8CE16B2760C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25A0961F-64C5-4A12-AC2C-8CE16B2760C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25A0961F-64C5-4A12-AC2C-8CE16B2760C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
