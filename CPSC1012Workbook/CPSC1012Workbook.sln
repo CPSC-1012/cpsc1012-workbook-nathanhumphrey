@@ -15,13 +15,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProblemSolvingProb1", "Prob
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AreaOfHexagon", "AreaOfHexagon\AreaOfHexagon.csproj", "{25A0961F-64C5-4A12-AC2C-8CE16B2760C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingWithStrings", "WorkingWithStrings\WorkingWithStrings.csproj", "{F11BB2C7-5091-4414-A4F0-9B13FE908183}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkingWithStrings", "WorkingWithStrings\WorkingWithStrings.csproj", "{F11BB2C7-5091-4414-A4F0-9B13FE908183}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfThenExample", "IfThenExample\IfThenExample.csproj", "{0C9517AA-A382-453B-AC43-1C28152D7420}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IfThenExample", "IfThenExample\IfThenExample.csproj", "{0C9517AA-A382-453B-AC43-1C28152D7420}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfElseExample", "IfElseExample\IfElseExample.csproj", "{5CBBE991-FA33-4445-92DA-9CDB1B768BA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IfElseExample", "IfElseExample\IfElseExample.csproj", "{5CBBE991-FA33-4445-92DA-9CDB1B768BA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandonNumberIfElseNested", "RandonNumberIfElseNested\RandonNumberIfElseNested.csproj", "{00D4FBAD-E792-4FBA-B5FF-B54673C4C864}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandonNumberIfElseNested", "RandonNumberIfElseNested\RandonNumberIfElseNested.csproj", "{00D4FBAD-E792-4FBA-B5FF-B54673C4C864}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosNegOrZeroNumber", "PosNegOrZeroNumber\PosNegOrZeroNumber.csproj", "{C9C3D203-62EE-466B-A7F0-6F1D857416F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheatreAdmissionCost", "TheatreAdmissionCost\TheatreAdmissionCost.csproj", "{62537D11-F1A1-43F2-86C0-C2EB94058838}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IspBillingAmount", "IspBillingAmount\IspBillingAmount.csproj", "{9EE433A9-EE35-490F-93E1-30FC32B94382}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +75,18 @@ Global
 		{00D4FBAD-E792-4FBA-B5FF-B54673C4C864}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00D4FBAD-E792-4FBA-B5FF-B54673C4C864}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00D4FBAD-E792-4FBA-B5FF-B54673C4C864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9C3D203-62EE-466B-A7F0-6F1D857416F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9C3D203-62EE-466B-A7F0-6F1D857416F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9C3D203-62EE-466B-A7F0-6F1D857416F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9C3D203-62EE-466B-A7F0-6F1D857416F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62537D11-F1A1-43F2-86C0-C2EB94058838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62537D11-F1A1-43F2-86C0-C2EB94058838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62537D11-F1A1-43F2-86C0-C2EB94058838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62537D11-F1A1-43F2-86C0-C2EB94058838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EE433A9-EE35-490F-93E1-30FC32B94382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EE433A9-EE35-490F-93E1-30FC32B94382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EE433A9-EE35-490F-93E1-30FC32B94382}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EE433A9-EE35-490F-93E1-30FC32B94382}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
