@@ -23,11 +23,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IfElseExample", "IfElseExam
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandonNumberIfElseNested", "RandonNumberIfElseNested\RandonNumberIfElseNested.csproj", "{00D4FBAD-E792-4FBA-B5FF-B54673C4C864}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosNegOrZeroNumber", "PosNegOrZeroNumber\PosNegOrZeroNumber.csproj", "{C9C3D203-62EE-466B-A7F0-6F1D857416F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosNegOrZeroNumber", "PosNegOrZeroNumber\PosNegOrZeroNumber.csproj", "{C9C3D203-62EE-466B-A7F0-6F1D857416F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheatreAdmissionCost", "TheatreAdmissionCost\TheatreAdmissionCost.csproj", "{62537D11-F1A1-43F2-86C0-C2EB94058838}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheatreAdmissionCost", "TheatreAdmissionCost\TheatreAdmissionCost.csproj", "{62537D11-F1A1-43F2-86C0-C2EB94058838}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IspBillingAmount", "IspBillingAmount\IspBillingAmount.csproj", "{9EE433A9-EE35-490F-93E1-30FC32B94382}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IspBillingAmount", "IspBillingAmount\IspBillingAmount.csproj", "{9EE433A9-EE35-490F-93E1-30FC32B94382}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetThreeNumbers", "GetThreeNumbers\GetThreeNumbers.csproj", "{0D812A80-6F4D-4C88-A191-7DF4695F8C28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomNumberWhileLoop", "RandomNumberWhileLoop\RandomNumberWhileLoop.csproj", "{4E4ABC4E-B36F-41A7-B32C-8A297BAFBE62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +91,14 @@ Global
 		{9EE433A9-EE35-490F-93E1-30FC32B94382}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EE433A9-EE35-490F-93E1-30FC32B94382}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EE433A9-EE35-490F-93E1-30FC32B94382}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D812A80-6F4D-4C88-A191-7DF4695F8C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D812A80-6F4D-4C88-A191-7DF4695F8C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D812A80-6F4D-4C88-A191-7DF4695F8C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D812A80-6F4D-4C88-A191-7DF4695F8C28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E4ABC4E-B36F-41A7-B32C-8A297BAFBE62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E4ABC4E-B36F-41A7-B32C-8A297BAFBE62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E4ABC4E-B36F-41A7-B32C-8A297BAFBE62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E4ABC4E-B36F-41A7-B32C-8A297BAFBE62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
