@@ -1,4 +1,4 @@
-﻿int number;
+﻿int number = 0;
 int count = 0;
 const int MaxEntries = 3;
 
@@ -7,8 +7,23 @@ Console.WriteLine();
 
 while (count < MaxEntries)
 {
-	Console.Write($"Enter number {count + 1}: ");
-	number = int.Parse(Console.ReadLine());
+	// Flag for valid input
+	bool isValidNumber = false;
+	do
+	{
+		try
+		{
+			Console.Write($"Enter number {count + 1}: ");
+			number = int.Parse(Console.ReadLine());
+			isValidNumber = true;
+		}
+		catch
+		{
+			Console.WriteLine("You must enter a whole number.");
+		}
+	} while (isValidNumber == false); // alternative is !isValidNumber
+
+
 	Console.WriteLine($"Your number is {number}");
 
 	// Increment the count
