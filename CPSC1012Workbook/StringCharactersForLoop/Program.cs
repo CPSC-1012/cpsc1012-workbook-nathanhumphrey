@@ -4,7 +4,7 @@
 Console.WriteLine("==== String Characters ====");
 Console.WriteLine();
 
-Console.Write("Eneter a phrase: ");
+Console.Write("Enter a phrase: ");
 userInput = Console.ReadLine();
 
 // FOR LOOP EXAMPLE
