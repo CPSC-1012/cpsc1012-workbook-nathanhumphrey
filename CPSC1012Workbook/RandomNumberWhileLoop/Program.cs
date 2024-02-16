@@ -12,13 +12,23 @@ Console.WriteLine();
 Console.WriteLine($"You get {MaxGuesses} guesses to guess the number.");
 Console.WriteLine();
 
-while (userGuess != random && count < MaxGuesses)
+// Pre-Condition Solution
+//while (userGuess != random && count < MaxGuesses)
+//{
+//	Console.Write($"Enter guess #{count + 1}: ");
+//	userGuess = int.Parse(Console.ReadLine());
+
+//	count += 1;
+//}
+
+// Post-Condition Solution
+do
 {
 	Console.Write($"Enter guess #{count + 1}: ");
 	userGuess = int.Parse(Console.ReadLine());
 
 	count += 1;
-}
+} while (userGuess != random && count < MaxGuesses);
 
 Console.WriteLine();
 
