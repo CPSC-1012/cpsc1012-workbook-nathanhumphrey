@@ -1,1 +1,3 @@
-﻿Console.WriteLine("Hello, World!");
+﻿Console.WriteLine("Hello");
+
+string x = Console.ReadLine();
