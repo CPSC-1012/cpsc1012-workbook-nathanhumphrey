@@ -3,58 +3,132 @@
 const int MaxStudents = 25;
 string[] firstNames = new string[MaxStudents];
 string[] lastNames = new string[MaxStudents];
-int[] studentsIds = new int[MaxStudents];
-string response = "Y";
-StreamWriter writer = null;
-string filename = "students.csv";
+int[] studentIds = new int[MaxStudents];
 
-Console.WriteLine("==== Student Records Writer ====");
+int studentCount = 0;
+string filename;
+string option;
+
+Console.WriteLine("==== Student Records Manager ====");
 Console.WriteLine();
-
-int count = 0;
 
 do
 {
-	firstNames[count] = Prompt($"Enter first name {count + 1}: ");
+	DisplayMenu();
+	option = Prompt("Enter menu option: ").ToUpper();
 
-	lastNames[count] = Prompt($"Enter last name {count + 1}: ");
+	switch (option)
+	{
+		case "E":
+			// Enter student data
+			studentCount = EnterStudents(firstNames, lastNames, studentIds);
+			break;
+		case "S":
+			// Save student data
+			// TODO: validate that the entered name is not empty
+			filename = Prompt("Enter name of file to save to: ");
+			SaveStudentData(filename, firstNames, lastNames, studentIds, studentCount);
+			break;
+		case "Q":
+			Console.WriteLine();
+			Console.WriteLine("Goodbye");
+			break;
+		default:
+			Console.WriteLine($"Sorry, {option} is not a valid option.");
+			break;
+	}
 
-	studentsIds[count] = PromptForInt($"Enter id {count + 1}: ");
-	
-	count += 1;
+} while (option != "Q");
 
+// ###########################################################################
+//								METHOD DECLARATIONS
+// ###########################################################################
+
+/// <summary>Display the main menu</summary>
+static void DisplayMenu()
+{
 	Console.WriteLine();
-	Console.Write("Do you want to enter another student (y/N)? ");
-	response = Console.ReadLine().ToUpper();
+	Console.WriteLine("     Menu Options     ");
+	Console.WriteLine("======================");
+	Console.WriteLine("[E]nter student data");
+	Console.WriteLine("[S]ave student data");
+	Console.WriteLine("[Q]uit program");
+	Console.WriteLine();
+}
 
-} while (count < MaxStudents && response == "Y");
-
-// Write the students to a file
-try
+/// <summary>
+/// Writes student data to a file.
+/// <param name="filename">The filename to write the data to</param>
+/// <param name="firstNames">The array to hold first names</param>
+/// <param name="lastNames">The array to hold first names</param>
+/// <param name="studentIds">The array to hold first names</param>
+/// <param name="count">The count of students in the arrays</param>
+/// </summary>
+static void SaveStudentData(string filename, string[] firstNames, string[] lastNames, int[] studentIds,
+	int count)
 {
-	// Open the writer
-	writer = new StreamWriter(filename);
+	StreamWriter writer = null;
 
-	// Write the header record
-	writer.WriteLine("First Name,Last Name,Student ID");
-
-	// Write the students to the file
-	for (int index = 0; index < count; index += 1)
+	// Write the students to a file
+	try
 	{
-		writer.WriteLine($"{firstNames[index]},{lastNames[index]},{studentsIds[index]}");
+		// Open the writer
+		writer = new StreamWriter(filename);
+
+		// Write the header record
+		writer.WriteLine("First Name,Last Name,Student ID");
+
+		// Write the students to the file
+		for (int index = 0; index < count; index += 1)
+		{
+			writer.WriteLine($"{firstNames[index]},{lastNames[index]},{studentIds[index]}");
+		}
+	}
+	catch (Exception ex)
+	{
+		Console.WriteLine(ex.Message);
+	}
+	finally
+	{
+		if (writer != null)
+		{
+			// Close the writer
+			writer.Close();
+		}
 	}
 }
-catch (Exception ex)
+
+/// <summary>
+/// Allow the user to enter student data, all arrays must be the 
+/// same length.
+/// <param name="firstNames">The array to hold first names</param>
+/// <param name="lastNames">The array to hold first names</param>
+/// <param name="studentIds">The array to hold first names</param>
+/// <returns>The studentCount of the entered students</returns>
+/// </summary>
+static int EnterStudents(string[] firstNames, string[] lastNames, int[]studentIds)
 {
-	Console.WriteLine(ex.Message);
-}
-finally
-{
-	if (writer != null)
+	int size = firstNames.Length;
+	string response = "Y";
+	int count = 0;
+
+	do
 	{
-		// Close the writer
-		writer.Close();
-	}
+		firstNames[count] = Prompt($"Enter first name {count + 1}: ");
+
+		lastNames[count] = Prompt($"Enter last name {count + 1}: ");
+
+		studentIds[count] = PromptForInt($"Enter id {count + 1}: ");
+
+		count += 1;
+
+		Console.WriteLine();
+		Console.Write("Do you want to enter another student (y/N)? ");
+		response = Console.ReadLine().ToUpper();
+
+	} while (count < size && response == "Y");
+
+	return count;
 }
 
 /// <summary>
