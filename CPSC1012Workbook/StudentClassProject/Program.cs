@@ -1,100 +1,174 @@
-﻿// Declare variables for our students
-Student jane = new Student();
-// TODO: create the clark student using the greedy constructor
-Student clark = new Student();
+﻿using System;
 
-// TODO: Assign jane remaining fields
-jane.FirstName = "Jane";
-//jane.lastName = "Doe";
-//jane.studentId = 1234;
+const int MaxStudents = 32;
+Student[] students = new Student[MaxStudents];
 
-Console.WriteLine($"{jane.FullName()} has id {jane.StudentId}");
-Console.WriteLine($"{clark.FullName()} has id {clark.StudentId}");
+int studentCount = 0;
+string filename;
+string option;
+
+Console.WriteLine("==== Student Records Manager ====");
+Console.WriteLine();
+
+do
+{
+	DisplayMenu();
+	option = Prompt("Enter menu option: ").ToUpper();
+
+	switch (option)
+	{
+		case "E":
+			// Enter student data
+			studentCount = EnterStudents(students);
+			break;
+		case "S":
+			// Save student data
+			// TODO: validate that the entered name is not empty
+			filename = Prompt("Enter name of file to save to: ");
+			SaveStudentData(filename, students, studentCount);
+			break;
+		case "Q":
+			Console.WriteLine();
+			Console.WriteLine("Goodbye");
+			break;
+		default:
+			Console.WriteLine($"Sorry, {option} is not a valid option.");
+			break;
+	}
+
+} while (option != "Q");
+
+// ###########################################################################
+//								METHOD DECLARATIONS
+// ###########################################################################
+
+/// <summary>Display the main menu</summary>
+static void DisplayMenu()
+{
+	Console.WriteLine();
+	Console.WriteLine("     Menu Options     ");
+	Console.WriteLine("======================");
+	Console.WriteLine("[E]nter student data");
+	Console.WriteLine("[S]ave student data");
+	Console.WriteLine("[Q]uit program");
+	Console.WriteLine();
+}
 
 /// <summary>
-/// Represents a student
+/// Writes student data to a file.
+/// <param name="filename">The filename to write the data to</param>
+/// <param name="students">The array to hold students</param>
+/// <param name="count">The count of students in the arrays</param>
 /// </summary>
-class Student
+static void SaveStudentData(string filename, Student[] students, int count)
 {
-	// Fields
-	private string _firstName;
-	private string _lastName;
-	private int _studentId;
+	StreamWriter writer = null;
 
-	// Methods
-
-	// Getter and setter for firstName
-	//public string GetFirstName()
-	//{
-	//	return _firstName;
-	//}
-
-	//public void SetFirstName(string firstName)
-	//{
-	//	if (!string.IsNullOrWhiteSpace(firstName)) 
-	//	{
-	//		_firstName = firstName.Trim();
-	//	}
-	//}
-
-	// C# property for firstName
-	public string FirstName
+	// Write the students to a file
+	try
 	{
-		get
-		{
-			return _firstName;
-		}
+		// Open the writer
+		writer = new StreamWriter(filename);
 
-		set
+		// Write the header record
+		writer.WriteLine("First Name,Last Name,Student ID");
+
+		// Write the students to the file
+		for (int index = 0; index < count; index += 1)
 		{
-			if (!string.IsNullOrWhiteSpace(value))
-			{
-				_firstName = value.Trim();
-			}
-			else
-			{
-				throw new Exception("First name cannot be empty");
-			}
-			
+			writer.WriteLine(students[index].ToCsvString());
 		}
 	}
-
-	// TODO: Implement LastName property, cannot be empty or white space
-
-	// TODO: Implement StudentId property, must be positive four-digit
-
-	/// <summary>
-	/// Creates a default student with empty first and last names, and 
-	/// student id of zero.
-	/// </summary>
-	public Student()
+	catch (Exception ex)
 	{
-		_firstName = "";
-		_lastName = "";
-		_studentId = 0;
+		Console.WriteLine(ex.Message);
 	}
-
-	/// <summary>
-	/// Creates a student with the supplied first name, last name, and id
-	/// </summary>
-	/// <param name="firstName">the student first name</param>
-	/// <param name="lastName">the student last name</param>
-	/// <param name="studentId">the student id</param>
-	public Student(string firstName, string lastName, int studentId)
+	finally
 	{
-		// Leverage the properties for validation
-		FirstName = firstName;
-
-		// TODO: use the properties for LastName and StudentId
-		//		 to assign remaining params
+		if (writer != null)
+		{
+			// Close the writer
+			writer.Close();
+		}
 	}
+}
 
-	/// <summary>
-	/// Returns the student's full name
-	/// </summary>
-	/// <returns>Return "FirstName LastName"</returns>
-	public string FullName()
+/// <summary>
+/// Allow the user to enter student data.
+/// <param name="students">The array to hold the students</param>
+/// <returns>The studentCount of the entered students</returns>
+/// </summary>
+static int EnterStudents(Student[] students)
+{
+	int size = students.Length;
+	string response = "Y";
+	int count = 0;
+
+	do
 	{
-		return $"{FirstName} {LastName}";
-	}
+		// NOTE: the following try/catch is not best practice, but is used here
+		// for brevity.
+		try
+		{
+			Student tempStudent = new Student();
+
+			tempStudent.FirstName = Prompt($"Enter first name {count + 1}: ");
+			tempStudent.LastName = Prompt($"Enter last name {count + 1}: ");
+			tempStudent.StudentId = PromptForInt($"Enter id {count + 1}: ");
+
+			// Place the student object into the array
+			students[count] = tempStudent;
+
+			count += 1;
+
+			Console.WriteLine();
+			Console.Write("Do you want to enter another student (y/N)? ");
+			response = Console.ReadLine().ToUpper();
+		}
+		catch (Exception ex )
+		{
+			Console.WriteLine($"There was an error: {ex.Message}");
+		}
+
+	} while (count < size && response == "Y");
+
+	return count;
+}
+
+/// <summary>
+/// Prompt the user for input
+/// </summary>
+/// <param name="label">The prompt label to display</param>
+/// <returns>The input the user entered as a string</returns>
+static string Prompt(string label)
+{
+	Console.Write(label);
+	return Console.ReadLine();
+}
+
+/// <summary>Prompt the user for input as an integer</summary>
+/// <param name="label">The prompt label to display</param>
+/// <param name="errorMessage">A custom error message to display if input is invalid (optional)</param>
+/// <returns>The input the user entered as an int</returns>
+static int PromptForInt(string label, string errorMessage = "Sorry, enter a valid integer.")
+{
+	int intInput = 0;
+	bool isValidInt = false;
+
+	do
+	{
+		string stringInput = Prompt(label);
+
+		try
+		{
+			intInput = int.Parse(stringInput);
+			isValidInt = true;
+		}
+		catch
+		{
+			Console.WriteLine(errorMessage);
+		}
+	} while (!isValidInt);
+
+	return intInput;
 }
