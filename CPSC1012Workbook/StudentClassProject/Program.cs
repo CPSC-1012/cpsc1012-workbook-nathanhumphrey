@@ -1,9 +1,9 @@
 ﻿using System;
 
 const int MaxStudents = 32;
-Student[] students = new Student[MaxStudents];
+// Student[] students = new Student[MaxStudents];
+List<Student> students = new List<Student>();
 
-int studentCount = 0;
 string filename;
 string option;
 
@@ -19,13 +19,13 @@ do
 	{
 		case "E":
 			// Enter student data
-			studentCount = EnterStudents(students);
+			 EnterStudents(students, MaxStudents);
 			break;
 		case "S":
 			// Save student data
 			// TODO: validate that the entered name is not empty
 			filename = Prompt("Enter name of file to save to: ");
-			SaveStudentData(filename, students, studentCount);
+			SaveStudentData(filename, students);
 			break;
 		case "Q":
 			Console.WriteLine();
@@ -57,10 +57,9 @@ static void DisplayMenu()
 /// <summary>
 /// Writes student data to a file.
 /// <param name="filename">The filename to write the data to</param>
-/// <param name="students">The array to hold students</param>
-/// <param name="count">The count of students in the arrays</param>
+/// <param name="students">The list to hold students</param>
 /// </summary>
-static void SaveStudentData(string filename, Student[] students, int count)
+static void SaveStudentData(string filename, List<Student> students)
 {
 	StreamWriter writer = null;
 
@@ -74,9 +73,9 @@ static void SaveStudentData(string filename, Student[] students, int count)
 		writer.WriteLine("First Name,Last Name,Student ID");
 
 		// Write the students to the file
-		for (int index = 0; index < count; index += 1)
+		foreach(Student student in students)
 		{
-			writer.WriteLine(students[index].ToCsvString());
+			writer.WriteLine(student.ToCsvString());
 		}
 	}
 	catch (Exception ex)
@@ -96,13 +95,11 @@ static void SaveStudentData(string filename, Student[] students, int count)
 /// <summary>
 /// Allow the user to enter student data.
 /// <param name="students">The array to hold the students</param>
-/// <returns>The studentCount of the entered students</returns>
+/// <param name="siez">The maximum number of students to enter</param>
 /// </summary>
-static int EnterStudents(Student[] students)
+static void EnterStudents(List<Student> students, int size)
 {
-	int size = students.Length;
 	string response = "Y";
-	int count = 0;
 
 	do
 	{
@@ -112,14 +109,12 @@ static int EnterStudents(Student[] students)
 		{
 			Student tempStudent = new Student();
 
-			tempStudent.FirstName = Prompt($"Enter first name {count + 1}: ");
-			tempStudent.LastName = Prompt($"Enter last name {count + 1}: ");
-			tempStudent.StudentId = PromptForInt($"Enter id {count + 1}: ");
+			tempStudent.FirstName = Prompt($"Enter first name {students.Count + 1}: ");
+			tempStudent.LastName = Prompt($"Enter last name {students.Count + 1}: ");
+			tempStudent.StudentId = PromptForInt($"Enter id {students.Count + 1}: ");
 
 			// Place the student object into the array
-			students[count] = tempStudent;
-
-			count += 1;
+			students.Add(tempStudent);
 
 			Console.WriteLine();
 			Console.Write("Do you want to enter another student (y/N)? ");
@@ -130,9 +125,7 @@ static int EnterStudents(Student[] students)
 			Console.WriteLine($"There was an error: {ex.Message}");
 		}
 
-	} while (count < size && response == "Y");
-
-	return count;
+	} while (students.Count < size && response == "Y");
 }
 
 /// <summary>
